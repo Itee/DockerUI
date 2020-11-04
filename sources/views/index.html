@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+    <head>
+        <base href="C:\Users\tvalcke\Programmation\DockerUI\sources\">
+        <meta charset="UTF-8">
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+        <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+        <link rel="stylesheet" href="styles/bootstrap.css" />
+        <link rel="stylesheet" href="styles/all.css" />
+        <link rel="stylesheet" href="styles/style.css" />
+        <title>DockerUI</title>
+    </head>
+
+    <body class="d-flex flex-column h-100 overflow-hidden">
+        <!-- Fixed navbar -->
+        <nav id="main-navbar" class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+
+            <a class="navbar-brand">DockerUI</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                </svg>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Command
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a id="docker_info_link" class="dropdown-item">info</a>
+                            <a id="docker_build_link" class="dropdown-item">build</a>
+                            <a id="docker_events_link" class="dropdown-item">events</a>
+                            <a id="docker_ps_link" class="dropdown-item">ps</a>
+                            <a id="docker_top_link" class="dropdown-item">top</a>
+                            <a id="docker_inspect_link" class="dropdown-item">inspect</a>
+                            <a id="docker_search_link" class="dropdown-item">search</a>
+                            <div class="dropdown-divider"></div> <!--container-->
+                            <a id="docker_attach_link" class="dropdown-item">attach</a>
+                            <a id="docker_port_link" class="dropdown-item">port</a>
+                            <a id="docker_rename_link" class="dropdown-item">rename</a>
+                            <a id="docker_update_link" class="dropdown-item">update</a>
+                            <a id="docker_commit_link" class="dropdown-item">commit</a>
+                            <a id="docker_copy_link" class="dropdown-item">copy</a>
+                            <a id="docker_diff_link" class="dropdown-item">diff</a>
+                            <a id="docker_exec_link" class="dropdown-item">exec</a>
+                            <a id="docker_wait_link" class="dropdown-item">wait</a>
+                            <a id="docker_kill_link" class="dropdown-item">kill</a>
+                            <a id="docker_export_link" class="dropdown-item">export</a>
+                            <a id="docker_stats_link" class="dropdown-item">stats</a>
+                            <a id="docker_logs_link" class="dropdown-item">logs</a>
+                            <a id="docker_remove_link" class="dropdown-item">rm</a>
+                            <div class="dropdown-divider"></div> <!--image-->
+                            <a id="docker_create_link" class="dropdown-item">create</a>
+                            <a id="docker_save_link" class="dropdown-item">save</a>
+                            <a id="docker_run_link" class="dropdown-item">run</a>
+                            <a id="docker_images_link" class="dropdown-item">images</a>
+                            <a id="docker_tag_link" class="dropdown-item">tag</a>
+                            <a id="docker_history_link" class="dropdown-item">history</a>
+                            <a id="docker_removeImage_link" class="dropdown-item">rmi</a>
+                            <div class="dropdown-divider"></div> <!--lifecycle-->
+                            <a id="docker_pause_link" class="dropdown-item">pause</a>
+                            <a id="docker_unpause_link" class="dropdown-item">unpause</a>
+                            <a id="docker_start_link" class="dropdown-item">start</a>
+                            <a id="docker_restart_link" class="dropdown-item">restart</a>
+                            <a id="docker_stop_link" class="dropdown-item">stop</a>
+                            <div class="dropdown-divider"></div> <!--login-->
+                            <a id="docker_login_link" class="dropdown-item">login</a>
+                            <a id="docker_logout_link" class="dropdown-item">logout</a>
+                            <div class="dropdown-divider"></div> <!--repo-->
+                            <a id="docker_import_link" class="dropdown-item">import</a>
+                            <a id="docker_load_link" class="dropdown-item">load</a>
+                            <a id="docker_pull_link" class="dropdown-item">pull</a>
+                            <a id="docker_push_link" class="dropdown-item">push</a>
+                            <div class="dropdown-divider"></div> <!--...-->
+                            <a id="docker_version_link" class="dropdown-item">version</a>
+                        </div>
+                    </li>
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            App-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            Builder-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            Buildx-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            Checkpoint-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            Cluster-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            Config-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Container
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>
+                        </div>
+                    </li>
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            Context-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+                    <li class="nav-item dropdown">
+                        <a id="imagesNavDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Image
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a id="images_list_link" class="dropdown-item">List</a>
+                            <div class="dropdown-divider"></div>
+                            <a id="images_build_link" class="dropdown-item" href="#">Build</a>
+                            <a id="images_import_link" class="dropdown-item" href="#">Import</a>
+                            <a id="images_load_link" class="dropdown-item" href="#">Load</a>
+                            <div class="dropdown-divider"></div>
+                            <a id="images_pull_link" class="dropdown-item" href="#">Pull</a>
+                            <a id="images_push_link" class="dropdown-item" href="#">Push</a>
+                            <div class="dropdown-divider"></div>
+                            <a id="images_save_link" class="dropdown-item text-success" href="#">Save</a>
+                            <a id="images_prune_link" class="dropdown-item text-warning" href="#">Prune</a>
+                            <a id="images_remove_link" class="dropdown-item text-danger" href="#">Remove</a>
+                        </div>
+                    </li>
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a id="imagesNavDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            Manifest-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+                    <li class="nav-item dropdown">
+                        <a id="imagesNavDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Network
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>
+                        </div>
+                    </li>
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a id="imagesNavDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            Node-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            Plugin-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            Registry-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            Secret-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            Service-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            Stack-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            Swarm-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            System-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            Trust-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Volume
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a id="command_foobar_link" class="dropdown-item">Foobar</a>
+                        </div>
+                    </li>
+
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a id="window_minimize_link" class="nav-link" href="#">
+                            <i class="fas fa-window-minimize fa-lg"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="window_maximize_link" class="nav-link" href="#">
+                            <i class="fas fa-window-maximize fa-lg"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="window_close_link" class="nav-link text-danger" href="#">
+                            <i class="fas fa-window-close fa-lg"></i>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+
+        <div id="main-container" class="d-flex flex-column h-100 overflow-auto">
+
+            <!--    <div class="container-fluid">-->
+            <!-- ... -->
+            <!--    </div>-->
+
+        </div>
+
+        <nav class="navbar sticky-bottom justify-content-center navbar-dark bg-dark">
+
+            <ul class="nav">
+                <li class="nav-item">
+                    <a id="itee_link" class="nav-link">Itee</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <!-- Modal -->
+        <div id="imageModal" class="modal fade" tabindex="-1" aria-labelledby="imageModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content h-100">
+                    <div class="modal-header">
+                        <h5 id="imageModalTitle" class="modal-title" >Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="imageModalBody" class="modal-body p-0 h-100">
+                        ...
+                    </div>
+                    <div id="imageModalFooter" class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- You can also require other files to run in this process -->
+        <!--<script src="sources/renderer.js"></script>-->
+        <script src="scripts/jquery.js"></script>
+        <script src="scripts/bootstrap.bundle.js"></script>
+        <!--<script src="scripts/bootstrap.js"></script>-->
+        <script src="scripts/onready.js"></script>
+<!--        <script src="dockerAPI.js"></script>-->
+
+    </body>
+
+</html>

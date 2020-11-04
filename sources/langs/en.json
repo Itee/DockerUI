@@ -1,0 +1,10 @@
+{
+  "index": {
+    "navbar": {
+      "images_link": "Images",
+      "containers_link": "Containers",
+      "networks_link": "Networks",
+      "volumes_link": "Volumes"
+    }
+  }
+}

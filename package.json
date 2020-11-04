@@ -1,0 +1,41 @@
+{
+  "name": "dockerui",
+  "version": "1.0.0",
+  "description": "UI for Docker",
+  "main": "sources/main.js",
+  "scripts": {
+    "start": "electron sources/main.js --local",
+    "debug": "electron sources/main.js --debug --local",
+    "postinstall": "electron-builder install-app-deps",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "author": "Itee <valcketristan@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "@popperjs/core": "^2.4.4",
+    "bootstrap": "^4.5.2",
+    "bootstrap-icons": "^1.0.0",
+    "electron": "^10.1.2",
+    "electron-builder": "^22.8.0",
+    "jquery": "^3.5.1"
+  },
+  "build": {
+    "appId": "1spatial.realworld4d",
+    "productName": "RealWorld4D",
+    "copyright": "Copyright © 2020 1Spatial",
+    "files": [
+      "configs/**/*",
+      "data/**/*",
+      "images/**/*",
+      "langs/**/*",
+      "node_modules/**/*",
+      "sources/**/*",
+      "styles/**/*",
+      "views/**/*",
+      "webfonts/**/*",
+      "package.json"
+    ]
+  }
+}
